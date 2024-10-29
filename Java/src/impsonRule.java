@@ -19,3 +19,15 @@ public class SimpsonRule {
         if (n % 2 != 0) {
             n++;
         }
+
+        double h = (b - a) / n;
+        double result = f.apply(a) + f.apply(b);
+
+        for (int i = 1; i < n; i++) {
+            double x = a + i * h;
+            result += (i % 2 == 0 ? 2 : 4) * f.apply(x);
+        }
+
+        return result * h / 3;
+    }
+}
